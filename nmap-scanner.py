@@ -10,7 +10,8 @@ type(ip_address)
 response = input("""\n Select the type of scan you wish to run:
                      1. SYN ACK Scan
                      2. UDP Scan
-                     3. Comprehensive Scan\n """)
+                     3. Comprehensive Scan
+                     4. Operating System Detection\n""")
 print(f'The scan type you selected is: {response}')
 
 if response == '1':
@@ -73,7 +74,7 @@ elif response == '2':
      print(f"{port}")
 
 
-
+# Performs comprehensive scan
 elif response == '3':
 
     nmap_version = scanner.nmap_version()
@@ -102,6 +103,11 @@ elif response == '3':
     print(f'\nOpen ports: ' )
     for port in open_ports:
      print(f"{port}")
+
+# performs os detection
+elif response == '4':
+ os_detection = scanner.scan(ip_address, arguments='-O')['scan'][ip_address]['osmatch'][0]
+ print(f"{os_detection}")
 
 else:
     print("Invalid input.")
