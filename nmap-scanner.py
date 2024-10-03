@@ -107,7 +107,12 @@ elif response == '3':
 # performs os detection
 elif response == '4':
  os_detection = scanner.scan(ip_address, arguments='-O')['scan'][ip_address]['osmatch'][0]
- print(f"{os_detection}")
+ # Print relevent information 
+ print(f"\nOS Name: {os_detection['name']}\n")
+ print(f"Accuracy: {os_detection['accuracy']}%\n")
+ print(f"OS Type: {os_detection['osclass'][0]['type']}\n")
+ print(f"OS Version: {os_detection['osclass'][0]['osgen']}\n")
+ print(f"Vendor:  {os_detection['osclass'][0]['vendor']}\n")
 
 else:
     print("Invalid input.")
